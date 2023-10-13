@@ -1,0 +1,16 @@
+// ignore the env file
+.ignore(/\.env/)
+// ignore the node_modules folder
+.ignore(/node_modules/)
+// ignore the .git folder
+.ignore(/\.git/)
+// ignore the .idea folder
+.ignore(/\.idea/)
+// ignore the .vscode folder
+.ignore(/\.vscode/)
+// ignore the .DS_Store file
+.ignore(/\.DS_Store/)
+// ignore the .gitignore file
+.ignore(/\.gitignore/)
+// ignore the .gitkeep file
+.ignore(/\.gitkeep/)
