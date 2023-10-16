@@ -1,5 +1,5 @@
 // ignore the env file
-.ignore(/\.env/)
+.ignore(*.env/)
 // ignore the node_modules folder
 .ignore(/node_modules/)
 // ignore the .git folder
