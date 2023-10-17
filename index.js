@@ -19,13 +19,17 @@ document.getElementById("send-btn").addEventListener("click", () => {
     movieBossText.innerText = `Ok, just wait a second while my digital brain digests that...`
    }
   fetchBotReply(userInput);
-  fetchSynopsis(userInput);
+  //fetchSynopsis(userInput);
+  GetSugestion(userInput)
 })
 
  async function fetchBotReply(outline){
   const response = await openai.createCompletion({
       model: 'text-davinci-003',
-    prompt: `Generate a short message to enthusiastically say "${outline}" sounds interesting and`,
+    prompt: `Generate a short message that says, be ready to understand more about "${outline}" sound educated and professional,
+     ###
+     outline: "${outline}"
+     message: I 'll need to think about that. But your question is amazing! I love the bit about software development ideas!`,
     max_tokens: 60,
   })
    movieBossText.innerText = response.data.choices[0].text.trim();
@@ -38,4 +42,23 @@ async function fetchSynopsis(outline) {
     max_tokens: 700,
   })
    document.getElementById('output-text').innerText = response.data.choices[0].text.trim()
+}
+
+async function GetSugestion(programingLanguage, programingDetails)
+{
+  const response = await openai.createCompletion({
+    model: 'text-davinci-003',
+    prompt: `Use a programing langauge and programing details to create a short synopsis for a software developer informatin
+    ###
+    Programing Language: Software Developer Languages and tools,
+    Programing Details: Software development tool details which gives a detailed information example Software development is a complex process that requires a range of tools to aid developers in various tasks.These tools streamline development, improve collaboration, and enhance the quality of software products.,
+    ###
+    programingLanguage: ${programingLanguage},
+    programingDetails: ${programingDetails}`,
+    max_tokens: 100,
+  })
+  document.getElementById('output-text').innerText = response.data.choices[0].text.trim()
+  document.getElementById('output-text').style.display = 'none'
+  document.getElementById('output-text').style.display = 'block'
+
 }
